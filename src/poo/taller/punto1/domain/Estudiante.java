@@ -1,21 +1,33 @@
 package poo.taller.punto1.domain;
 
 public class Estudiante {
+    public static final int NRO_MAX_ESTUDIANTES_PERMITIDOS = 3;
+    private static int nroEstudiantes;
+
     private String identificacion;
     private String nombre;
     private int semestreActual;
     private char genero;
     private Nota nota;
 
-    public Estudiante(String identificacion, String nombre) {
+    private Estudiante(String identificacion, String nombre) {
         this.identificacion = identificacion;
         this.nombre = nombre;
+        nroEstudiantes++;
     }
 
-    public Estudiante(String identificacion, String nombre, int semestreActual) {
-        this.identificacion = identificacion;
-        this.nombre = nombre;
+    private Estudiante(String identificacion, String nombre, int semestreActual) {
+        this(identificacion, nombre);
         this.semestreActual = semestreActual;
+    }
+
+    public static Estudiante matricular(String identificacion, String nombre) {
+        if (nroEstudiantes < NRO_MAX_ESTUDIANTES_PERMITIDOS) {
+            return new Estudiante(identificacion, nombre);
+        } else {
+            System.out.println("No es posible matricular más estudiantes.");
+            return null;
+        }
     }
 
     public String getIdentificacion() {
@@ -44,5 +56,9 @@ public class Estudiante {
 
     public void setNota(Nota nota) {
         this.nota = nota;
+    }
+
+    public static int getNroEstudiantes() {
+        return nroEstudiantes;
     }
 }

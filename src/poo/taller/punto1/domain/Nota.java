@@ -3,6 +3,10 @@ package poo.taller.punto1.domain;
 import java.util.List;
 
 public class Nota {
+    public static final double PORC_SEGUIMIENTO = 0.4;
+    public static final double PORC_FINAL = 0.3;
+    public static final double PORC_PARCIAL = 0.3;
+
     private double notaParcial;
     private double notaFinal;
     private List<Double> notasSeguimiento;
@@ -23,7 +27,9 @@ public class Nota {
     }
 
     public double calcularDefinitiva() {
-        return (this.notaParcial * 0.3) + (this.notaFinal * 0.3) + (calcularSeguimiento() * 0.4);
+        return (this.notaParcial * PORC_PARCIAL) +
+                (this.notaFinal * PORC_FINAL) +
+                (calcularSeguimiento() * PORC_SEGUIMIENTO);
     }
 
     public double getNotaParcial() {

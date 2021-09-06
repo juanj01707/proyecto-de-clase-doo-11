@@ -12,21 +12,35 @@ public class AppUniv {
         Docente profe = new Docente("1234", "Alejo Ramirez");
         Asignatura poo = new Asignatura("POO", profe);
 
-        Estudiante lema = new Estudiante("34546", "Alejandro Lema");
+        System.out.println("Estudiantes antes " + Estudiante.getNroEstudiantes());
+
+        Estudiante lema = Estudiante.matricular("34546", "Alejandro Lema");
+        Estudiante melanie = Estudiante.matricular("46564", "Melanie Giraldo");
+        Estudiante david = Estudiante.matricular("68790", "David Ayala");
+        Estudiante pepito = Estudiante.matricular("68790", "Pepito");
+        Estudiante pablito = Estudiante.matricular("68790", "Pablito");
+        Estudiante johana = Estudiante.matricular("34", "Joha");
+
+        System.out.println(pablito);
+        System.out.println(johana);
+
+        System.out.println("Estudiantes después " + Estudiante.getNroEstudiantes());
+
+        // lema
         Nota notaLema = new Nota(poo);
         notaLema.setNotaParcial(3);
         notaLema.setNotaFinal(4.7);
         notaLema.setNotasSeguimiento(Arrays.asList(5.0, 1.0, 2.5, 4.0, 3.2));
         lema.setNota(notaLema);
 
-        Estudiante melanie = new Estudiante("46564", "Melanie Giraldo");
+        // melanie
         Nota notaMelanie = new Nota(poo);
         notaMelanie.setNotaParcial(4);
         notaMelanie.setNotaFinal(3.2);
         notaMelanie.setNotasSeguimiento(Arrays.asList(3.2, 2.5, 4.5, 2.0, 4.2));
         melanie.setNota(notaMelanie);
 
-        Estudiante david = new Estudiante("68790", "David Ayala");
+        // david
         Nota notaDavid = new Nota(poo);
         notaDavid.setNotaParcial(5);
         notaDavid.setNotaFinal(4.0);
