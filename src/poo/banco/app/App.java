@@ -4,11 +4,14 @@ import poo.banco.dominio.Banco;
 import poo.banco.dominio.CuentaBancaria;
 import poo.banco.dominio.Persona;
 
+import java.time.LocalDateTime;
+import java.time.Month;
+
 public class App {
     public static void main(String[] args) {
         Banco bancolombia = new Banco("Bancolombia");
 
-        Persona alejandro = new Persona("Alejandro", 124);
+        Persona alejandro = new Persona("Alejandro");
         Persona lema = new Persona("Lema", 321);
 
         CuentaBancaria cuentaAlejo = new CuentaBancaria(111, "Ahorro", 100000, alejandro, bancolombia);

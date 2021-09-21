@@ -7,6 +7,10 @@ public class Persona {
     private long identificacion;
     private LocalDateTime fechaNacimiento;
 
+    public Persona(String nombre) {
+        this.nombre = nombre;
+    }
+
     public Persona(String nombre, long identificacion) {
         this.nombre = nombre;
         this.identificacion = identificacion;

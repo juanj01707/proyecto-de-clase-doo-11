@@ -1,5 +1,7 @@
 package poo.parcial.dominio;
 
+import poo.banco.dominio.Persona;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -42,7 +44,7 @@ public class CarritoDeCompras {
         if (TipoProducto.TIPOS.stream().filter(t -> t.equals(tipo)).findFirst().isPresent()) {
             // Funcional
             productosBuscados = this.productos.stream()
-                    .filter(prod -> prod.getTipo().equals(tipo))
+                    .filter(producto -> producto.getTipo().equals(tipo))
                     .collect(Collectors.toList());
 
             return productosBuscados;
@@ -75,9 +77,15 @@ public class CarritoDeCompras {
         int valorTotal = 0;
 
         // Tradicional
-//        for (Producto prod : this.productos) {
-//            valorTotal += prod.getPrecio();
-//        }
+        for (int i = 0; i < this.productos.size(); i++) {
+            Producto prod = this.productos.get(i);
+
+            valorTotal += prod.getPrecio();
+        }
+
+        for (Producto prod : this.productos) {
+            valorTotal += prod.getPrecio();
+        }
 
         // Funcional
         valorTotal = this.productos.stream()
@@ -104,5 +112,9 @@ public class CarritoDeCompras {
 
     public List<Producto> getProductos() {
         return productos;
+    }
+
+    public String getSupermercado() {
+        return supermercado;
     }
 }
