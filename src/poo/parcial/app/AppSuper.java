@@ -15,13 +15,15 @@ public class AppSuper {
     private static final int OPCION_SACAR = 1;
     private static final int OPCION_MAS_CARO = 2;
     private static final int OPCION_VER_TOTAL = 3;
+    private static final int OPCION_VER_POR_TIPO = 4;
 
     public static void main(String[] args) {
         CarritoDeCompras carrito = new CarritoDeCompras("Exito");
 
         while (true) {
             int opcionElegida = JOptionPane.showOptionDialog(null, "Elige una de las siguientes opciones",
-                    "POO", 0, 0, icono, Arrays.asList("Agregar Producto", "Sacar producto", "Ver más caro", "Ver total").toArray(), null);
+                    "POO", 0, 0, icono,
+                    Arrays.asList("Agregar Producto", "Sacar producto", "Ver más caro", "Ver total", "Ver por tipo").toArray(), null);
 
             switch (opcionElegida) {
                 case OPCION_AGREGAR :
@@ -39,6 +41,8 @@ public class AppSuper {
                         mostrarMensaje("Ocurrió un error agregando el producto");
                     }
                     break;
+                case OPCION_VER_POR_TIPO :
+                    mostrarMensaje("Aqui va mas caro");
                 case OPCION_SACAR :
                     mostrarMensaje("Aqui va sacar");
                     break;
