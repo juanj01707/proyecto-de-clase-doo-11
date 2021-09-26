@@ -8,6 +8,8 @@ import javax.swing.*;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class AppSuper {
     private static ImageIcon icono = new ImageIcon("C:/Users/Alejandro/Desktop/uco.png");
@@ -27,8 +29,21 @@ public class AppSuper {
 
             switch (opcionElegida) {
                 case OPCION_AGREGAR :
-                    String nombre = JOptionPane.showInputDialog("Ingrese el nombre");
-                    int precio = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el precio de " + nombre));
+                    String nombre;
+                    do {
+                        nombre = JOptionPane.showInputDialog("Ingrese el nombre");
+                    } while (nombre == null || nombre.trim().isEmpty());
+
+                    int precio = 0;
+                    do {
+                        try {
+                            precio = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el precio de " + nombre.trim()));
+                        } catch (NumberFormatException e) {
+                            mostrarMensaje("El precio ingresado no es correcto.");
+                        }
+
+                    } while(precio <= 0);
+
                     String tipo = (String) JOptionPane.showInputDialog(null, "Qué tipo de producto es " + nombre + "?",
                             "POO", JOptionPane.QUESTION_MESSAGE, icono, TipoProducto.TIPOS.toArray(), null);
 
@@ -42,13 +57,39 @@ public class AppSuper {
                     }
                     break;
                 case OPCION_VER_POR_TIPO :
-                    mostrarMensaje("Aqui va mas caro");
+                    String tipoBuscado = (String) JOptionPane.showInputDialog(null, "Seleccione un tipo a buscar",
+                            "POO", JOptionPane.QUESTION_MESSAGE, icono, TipoProducto.TIPOS.toArray(), null);
+
+                    List<Producto> productosDelTipo = carrito.buscarPorTipo(tipoBuscado);
+
+                    String productos = productosDelTipo.stream()
+                            .map(producto1 -> producto1.getNombre())
+                            .collect(Collectors.joining(", "));
+
+                    mostrarMensaje(productos);
+
+//                    for (Producto p: productosDelTipo) {
+//                        mostrarMensaje(p.getNombre());
+//                    }
+
                     break;
                 case OPCION_SACAR :
-                    mostrarMensaje("Aqui va sacar");
+                    String nombreASacar;
+                    do {
+                        nombreASacar = JOptionPane.showInputDialog("Ingrese el nombre");
+                    } while (nombreASacar == null || nombreASacar.trim().isEmpty());
+
+                    if (carrito.sacar(nombreASacar) == true) {
+                        mostrarMensaje(nombreASacar + " se sacó del carrito.");
+                    } else {
+                        mostrarMensaje(nombreASacar + " no existe en el carrito.");
+                    }
+
                     break;
                 case OPCION_MAS_CARO :
-                    mostrarMensaje("Aqui va mas caro");
+                    Producto pCaro = carrito.getProductoMasCaro();
+
+                    mostrarMensaje(pCaro.getNombre()  + "\n $ " + pCaro.getPrecio());
                     break;
                 case OPCION_VER_TOTAL :
                     mostrarMensaje("Llevas " + carrito.getProductos().size()  +
