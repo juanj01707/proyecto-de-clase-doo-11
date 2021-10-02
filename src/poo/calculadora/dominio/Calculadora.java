@@ -1,114 +1,82 @@
 package poo.calculadora.dominio;
 
 import javax.swing.JOptionPane;
+import java.util.List;
 
 
 public class Calculadora {
-    //private double number1 = 0.0;
-    //private double number2 = 0.0;
     private double numero;
     private int n;
     private double resultado = 0.0;
+
 
     public Calculadora() {
 
     }
 
+    public double sumar(List<Double> numeros, boolean redondear) {
+        double resultado = 0;
+        for (double num : numeros) {
+            resultado += num;
+        }
+        if (redondear == true) {
+            return Math.round(resultado);
+        } else {
 
+            return resultado;
+        }
+    }
 
-
-    public int ingresarN(){
-        do{
-            try{
-                n = Integer.parseInt(JOptionPane.showInputDialog("Ingrese con cuantos numeros quiere trabajar  "));
-                if(n<1){
-                    JOptionPane.showMessageDialog(null,"Numero ingresado no válido");
-                }
-            }catch (NumberFormatException ee){
-                JOptionPane.showMessageDialog(null,"Numero ingresado no válido");
+    public double restar(List<Double> numeros,boolean redondear) {
+        double cont = 0;
+        double resultado = 0;
+        for (double num : numeros) {
+            if (cont == 0) {
+                resultado = num;
+                cont++;
+            } else {
+                resultado = resultado - num;
+                cont++;
             }
-        }while(n<1);
-        return n;
+        }
+        if (redondear == true) {
+            return Math.round(resultado);
+        } else {
+
+            return resultado;
+        }
+    }
+    public double multiplicar(List<Double> numeros, boolean redondear) {
+        double resultado = 1;
+        for (double num : numeros) {
+            resultado *= num;
+        }
+        if (redondear == true) {
+            return Math.round(resultado);
+        } else {
+
+            return resultado;
+        }
     }
 
-    public double ingresarNumeros(){
-        do{
-            try{
-                double numero = Double.parseDouble(JOptionPane.showInputDialog("Ingrese el numero: "));
-                return numero;
-            }catch(NumberFormatException ee){
-                JOptionPane.showMessageDialog(null,"Numero ingresado no valido");
-                continue;
+    public double dividir(List<Double> numeros, boolean redondear) {
+        double cont = 1;
+        double resultado = 0;
+        for (double num : numeros) {
+            if (cont == 1) {
+                resultado = num;
+                cont++;
+            } else {
+                resultado = resultado / num;
+                cont++;
             }
-        }while(true);
-    }
-
-
-    public double sumar(int n) {
-        //this.number1 = Double.parseDouble(JOptionPane.showInputDialog("Digite el primer valor"));
-        //this.number2 = Double.parseDouble(JOptionPane.showInputDialog("Digite el segundo valor"));
-        double suma=0;
-        for(int i=0;i<n;i++){
-            numero = ingresarNumeros();
-            suma = suma+numero;
-            resultado = suma;
         }
-        Resultados(suma);
-        return suma;
+        if (redondear == true) {
+            return Math.round(resultado);
+        } else {
 
-
-    }
-
-    public double restar(int n) {
-        //this.number1 = Double.parseDouble(JOptionPane.showInputDialog("Digite el primer valor"));
-        //this.number2 = Double.parseDouble(JOptionPane.showInputDialog("Digite el segundo valor"));
-        //this.resultado = this.number1 - this.number2;
-        double resta=0;
-            for(int i=0;i<n;i++){
-                numero = ingresarNumeros();
-
-                resta-=numero;
-            }
-            Resultados(resta);
-            return resta;
+            return resultado;
         }
-        //JOptionPane.showMessageDialog((Component) null, "El resultado de la resta es: " + this.resultado);
-
-
-    public double multiplicar(int n) {
-        //this.number1 = Double.parseDouble(JOptionPane.showInputDialog("Digite el primer valor"));
-        //this.number2 = Double.parseDouble(JOptionPane.showInputDialog("Digite el segundo valor"));
-        //this.resultado = this.number1 / this.number2;
-        double multiplicacion=1;
-        for(int i=0;i<n;i++){
-            numero = ingresarNumeros();
-            multiplicacion = multiplicacion * numero;
-        }
-        Resultados(multiplicacion);
-        return multiplicacion;
-        //JOptionPane.showMessageDialog((Component) null, "El resultado de la multiplicacion es: " + this.resultado);
-    }
-
-    public double division(int n) {
-        //this.number1 = Double.parseDouble(JOptionPane.showInputDialog("Digite el primer valor"));
-        //this.number2 = Double.parseDouble(JOptionPane.showInputDialog("Digite el segundo valor"));
-        //this.resultado = this.number1 * this.number2;
-        double division=1;
-        numero = ingresarNumeros();
-        division=numero/division;
-        for(int i=1;i<n;i++){
-            numero = ingresarNumeros();
-            division=(double) (division/numero);
-        }
-        Resultados(division);
-        return division;
-
-        //JOptionPane.showMessageDialog((Component) null, "El resultado de la division es: " + this.resultado);
-    }
-
-    private static void Resultados(double resultado){
-        JOptionPane.showMessageDialog(null,"El total es:"+resultado);
     }
 }
-
 
