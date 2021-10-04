@@ -16,6 +16,30 @@ public class AppGame {
     private static final int OPCION_PUNTUACION = 2;
     private static final int OPCION_NUEVO_JUGADOR = 3;
 
+    public static String ingresarNombre(){
+        String nombreJugador;
+        do {
+            nombreJugador =(String) JOptionPane.showInputDialog
+                    (null,"¿Cuál es tu nombre? " );
+            //(null,"Ingresar nombre","Nuevo jugador",0,iconoNombre);
+        }while (nombreJugador == null || nombreJugador.trim().isEmpty());
+
+        return nombreJugador;
+    }
+
+    public static String jugada(int jugada){
+        if(jugada == 0){
+            return "PIEDRA";
+            //return "PIEDRA" + iconoPiedra;
+        }else if(jugada == 1){
+            return "PAPEL";
+            //return "PAPEL" + iconoPapel;
+        }else{
+            return "TIJERA";
+            //return "TIJERA"+ iconoTijera;
+        }
+    }
+
     public static void main(String[] args) {
         Game juego = new Game();
         while(true){
@@ -52,6 +76,7 @@ public class AppGame {
 
                 case OPCION_PUNTUACION:
                     if(juego.getNombreJugador() == null){
+                        JOptionPane.showMessageDialog(null,"No hay jugadores registrados \n"+"primeo ingresa un jugador");
                         juego.setNombreJugador(ingresarNombre());
                     }
                     JOptionPane.showMessageDialog(null,"¡TABLA DE PUNTUACIONES!" +
@@ -71,30 +96,7 @@ public class AppGame {
         }
     }
 
-    //METODOSS
-    public static String ingresarNombre(){
-        String nombreJugador;
-        do {
-            nombreJugador =(String) JOptionPane.showInputDialog
-                    (null,"¿Cuál es tu nombre? " );
-            //(null,"Ingresar nombre","Nuevo jugador",0,iconoNombre);
-        }while (nombreJugador == null || nombreJugador.trim().isEmpty());
 
-        return nombreJugador;
-    }
-
-    public static String jugada(int jugada){
-        if(jugada == 0){
-            return "PIEDRA";
-            //return "PIEDRA" + iconoPiedra;
-        }else if(jugada == 1){
-            return "PAPEL";
-            //return "PAPEL" + iconoPapel;
-        }else{
-            return "TIJERA";
-            //return "TIJERA"+ iconoTijera;
-        }
-    }
 
 }
 

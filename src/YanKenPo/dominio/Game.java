@@ -18,15 +18,9 @@ public class Game {
     }
 
     public String jugar(int jugada, int jugadaCPU) {
-        if (jugada == PIEDRA && jugadaCPU == TIJERA) {
+        if ((jugada == PIEDRA && jugadaCPU == TIJERA) || (jugada == PAPEL && jugadaCPU == PIEDRA) ||(jugada == TIJERA && jugadaCPU == PAPEL) ) {
             partidasGanadasJugador++;
             return "!IMPOSIBLE ME GANASTE!  \nFelicidades ganaste "+getNombreJugador();
-        } else if (jugada == PAPEL && jugadaCPU == PIEDRA) {
-            partidasGanadasJugador++;
-            return "!IMPOSIBLE ME GANASTE!  \nFelicidades ganaste "+getNombreJugador();
-        } else if (jugada == TIJERA && jugadaCPU == PAPEL) {
-            partidasGanadasJugador++;
-            return "!IMPOSIBLE ME GANASTE!  \nFelicidades ganaste"+getNombreJugador();
         } else if(jugada == jugadaCPU){
             partidasEmpatadas++;
             return "!EN LA GUERRA EL EMPATE CONLLEVA A LA DERROTA! \n Sigue intentando";
