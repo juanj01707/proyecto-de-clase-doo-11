@@ -20,7 +20,7 @@ public class AppGame {
         Game juego = new Game();
         while(true){
             int opcionElegida = JOptionPane.showOptionDialog(null,
-                    "PIEDRA, PAPEL O TIJERA!", "Juego ", 0, 0, icono,
+                    "YAN-KEN-PO!", "Juego ", 0, 0, icono,
                     Arrays.asList("Jugar", "Reglas", "Puntuacion", "Nuevo jugador").toArray(), null);
 
             switch (opcionElegida) {
@@ -40,16 +40,6 @@ public class AppGame {
                     JOptionPane.showMessageDialog(null,ganador);
                     break;
 
-                case OPCION_PUNTUACION:
-                    if(juego.getNombreJugador() == null){
-                        juego.setNombreJugador(ingresarNombre());
-                    }
-                    JOptionPane.showMessageDialog(null,"¡TABLA DE PUNTUACIONES!" +
-                            " \n "+juego.getNombreJugador()+": "+juego.getPartidasGanadasJugador()+
-                            "\n CPU: "+juego.getPartidasGanadasCPU()+
-                            "\n Partidas Empatadas: "+juego.getPartidasEmpatadas() );
-                    break;
-
                 case OPCION_REGLAS:
                     JOptionPane.showMessageDialog(null,"REGLAS:\n \n  " +
                             "El objetivo es vencer al oponente seleccionando el arma que gana, según las siguientes reglas:\n \n \n "  +
@@ -58,7 +48,16 @@ public class AppGame {
                             "El papel envuelve la piedra. (Gana el papel.) \n " +
                             "En caso de empate (que dos jugadores elijan el mismo elemento), se juega otra vez. \n\n ¡BUENA SUERTE!",
                             "Reglas",0,icono2);
+                    break;
 
+                case OPCION_PUNTUACION:
+                    if(juego.getNombreJugador() == null){
+                        juego.setNombreJugador(ingresarNombre());
+                    }
+                    JOptionPane.showMessageDialog(null,"¡TABLA DE PUNTUACIONES!" +
+                            " \n "+juego.getNombreJugador()+": "+juego.getPartidasGanadasJugador()+
+                            "\n CPU: "+juego.getPartidasGanadasCPU()+
+                            "\n Partidas Empatadas: "+juego.getPartidasEmpatadas() );
                     break;
                 case OPCION_NUEVO_JUGADOR:
                     juego.setNombreJugador(ingresarNombre());

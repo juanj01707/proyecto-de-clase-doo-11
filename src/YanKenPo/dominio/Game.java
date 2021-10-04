@@ -15,31 +15,31 @@ public class Game {
     public static final List<Integer> OPCION = Arrays.asList(PIEDRA, PAPEL, TIJERA);
 
     public Game() {
-
-    }
-
-    public int jugadaCPU() {
-        int JugadaCPU = new Random().nextInt(3);
-        return JugadaCPU;
     }
 
     public String jugar(int jugada, int jugadaCPU) {
         if (jugada == PIEDRA && jugadaCPU == TIJERA) {
             partidasGanadasJugador++;
-            return "!IMPOSIBLE!  \nFelicidades ganaste "+getNombreJugador();
+            return "!IMPOSIBLE ME GANASTE!  \nFelicidades ganaste "+getNombreJugador();
         } else if (jugada == PAPEL && jugadaCPU == PIEDRA) {
             partidasGanadasJugador++;
-            return "!IMPOSIBLE!  \nFelicidades ganaste "+getNombreJugador();
+            return "!IMPOSIBLE ME GANASTE!  \nFelicidades ganaste "+getNombreJugador();
         } else if (jugada == TIJERA && jugadaCPU == PAPEL) {
             partidasGanadasJugador++;
-            return "!IMPOSIBLE!  \nFelicidades ganaste"+getNombreJugador();
+            return "!IMPOSIBLE ME GANASTE!  \nFelicidades ganaste"+getNombreJugador();
         } else if(jugada == jugadaCPU){
             partidasEmpatadas++;
             return "!EN LA GUERRA EL EMPATE CONLLEVA A LA DERROTA! \n Sigue intentando";
         }else {
             partidasGanadasCPU++;
-            return "Mejor suerte para la proxima"+"\nGana la CPU";
+            return "!MEJOR SUERTE PARA LA PROXIMA! "+"\nGana la CPU";
         }
+    }
+
+
+    public int jugadaCPU() {
+        int JugadaCPU = new Random().nextInt(3);
+        return JugadaCPU;
     }
 
     public String getNombreJugador() {
