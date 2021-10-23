@@ -19,6 +19,9 @@ public class Directo extends Empleado {
         return salario-(this.calcularPension()+this.calcularSalud());
     }
 
+    public long getSalario() {
+        return salario;
+    }
 }
 
 
