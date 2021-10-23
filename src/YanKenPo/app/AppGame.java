@@ -5,8 +5,8 @@ import javax.swing.*;
 import java.util.Arrays;
 
 public class AppGame {
-    private static ImageIcon icono = new ImageIcon("C:\\Users\\JUAN JOSE DIAZ E\\Pictures\\IMGPOO\\Yan.jpg");
-    private static ImageIcon icono2 = new ImageIcon("C:\\Users\\JUAN JOSE DIAZ E\\Pictures\\IMGPOO\\Piedra.png");
+    private static ImageIcon icono = new ImageIcon("C:\\Users\\JUAN JOSE DIAZ E\\Pictures\\IMGPOO\\Spock.jpg");
+    private static ImageIcon icono2 = new ImageIcon("C:\\Users\\JUAN JOSE DIAZ E\\Pictures\\IMGPOO\\Sheldon.png");
     //private static ImageIcon iconoPiedra = new ImageIcon("C:\\Users\\JUAN JOSE DIAZ E\\Pictures\\IMGPOO\\yan.jpg");
     //private static ImageIcon iconoPapel = new ImageIcon("C:\\Users\\JUAN JOSE DIAZ E\\Pictures\\IMGPOO\\ken.jpg");
     //private static ImageIcon iconoTijeras = new ImageIcon("C:\\Users\\JUAN JOSE DIAZ E\\Pictures\\IMGPOO\\po.jpg");
@@ -34,9 +34,13 @@ public class AppGame {
         }else if(jugada == 1){
             return "PAPEL";
             //return "PAPEL" + iconoPapel;
-        }else{
+        }else if(jugada == 2){
             return "TIJERA";
             //return "TIJERA"+ iconoTijera;
+        }else if(jugada == 3){
+            return "LAGARTO";
+        }else {
+            return "SPOKE";
         }
     }
 
@@ -44,7 +48,7 @@ public class AppGame {
         Game juego = new Game();
         while(true){
             int opcionElegida = JOptionPane.showOptionDialog(null,
-                    "YAN-KEN-PO!", "Juego ", 0, 0, icono,
+                    "!PIEDRA, PAPEL, TIJERA, LAGARTO, SPOKE!", "Juego ", 0, 0, icono,
                     Arrays.asList("Jugar", "Reglas", "Puntuacion", "Nuevo jugador").toArray(), null);
 
             switch (opcionElegida) {
@@ -55,7 +59,7 @@ public class AppGame {
                     int jugadaCPU = juego.jugadaCPU();
                     int jugadaElegidaJugador = JOptionPane.showOptionDialog(null,"Seleccione: ",
                             "Juego",0,JOptionPane.QUESTION_MESSAGE,icono,
-                            Arrays.asList("PIEDRA","PAPEL","TIJERA").toArray(),null);
+                            Arrays.asList("PIEDRA","PAPEL","TIJERA","LAGARTO","SPOKE").toArray(),null);
 
                     JOptionPane.showMessageDialog(null,juego.getNombreJugador()+
                             " Seleccionó: \n"+jugada(jugadaElegidaJugador)+ "\n"+"La CPU seleccionó: \n"+jugada(jugadaCPU));
@@ -67,9 +71,11 @@ public class AppGame {
                 case OPCION_REGLAS:
                     JOptionPane.showMessageDialog(null,"REGLAS:\n \n  " +
                             "El objetivo es vencer al oponente seleccionando el arma que gana, según las siguientes reglas:\n \n \n "  +
-                            "La piedra aplasta la tijera. (Gana la piedra.) \n "+
-                            "La tijera corta el papel. (Gana la tijera.) \n "+
-                            "El papel envuelve la piedra. (Gana el papel.) \n " +
+                            "La Piedra aplasta la Tijera y aplasta al Lagarto. (Gana la piedra.) \n "+
+                            "La Tijera corta el Papel y decapita al Lagarto. (Gana la tijera.) \n "+
+                            "El papel envuelve la piedra y desautoriza a Spoke. (Gana el papel.) \n " +
+                            "El Lagarto envenena a Spoke y come Papel. (Gana el Lagarto.) \n " +
+                            "Spoke desintegra a la Piedra y aplasta a las tijeras. (Gana Spoke.) \n " +
                             "En caso de empate (que dos jugadores elijan el mismo elemento), se juega otra vez. \n\n ¡BUENA SUERTE!",
                             "Reglas",0,icono2);
                     break;

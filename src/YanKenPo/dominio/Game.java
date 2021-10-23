@@ -12,15 +12,21 @@ public class Game {
     private static final int PIEDRA = 0;
     private static final int PAPEL = 1;
     private static final int TIJERA = 2;
-    public static final List<Integer> OPCION = Arrays.asList(PIEDRA, PAPEL, TIJERA);
+    private static final int LAGARTO = 3;
+    private static final int SPOKE = 4;
+    public static final List<Integer> OPCION = Arrays.asList(PIEDRA, PAPEL, TIJERA, LAGARTO, SPOKE);
 
     public Game() {
     }
 
     public String jugar(int jugada, int jugadaCPU) {
-        if ((jugada == PIEDRA && jugadaCPU == TIJERA) || (jugada == PAPEL && jugadaCPU == PIEDRA) ||(jugada == TIJERA && jugadaCPU == PAPEL) ) {
+        if ((jugada == PIEDRA && jugadaCPU == TIJERA && jugadaCPU == LAGARTO ) ||
+            (jugada == PAPEL && jugadaCPU == PIEDRA && jugadaCPU == SPOKE) ||
+            (jugada == TIJERA && jugadaCPU == PAPEL && jugadaCPU == LAGARTO)||
+            (jugada == LAGARTO && jugadaCPU == SPOKE && jugadaCPU == PAPEL)||
+            (jugada == SPOKE && jugadaCPU == PIEDRA && jugadaCPU == TIJERA)) {
             partidasGanadasJugador++;
-            return "!IMPOSIBLE ME GANASTE!  \nFelicidades ganaste "+getNombreJugador();
+            return "!IMPOSIBLE ME GANASTE.....!  \nFelicidades ganaste "+getNombreJugador();
         } else if(jugada == jugadaCPU){
             partidasEmpatadas++;
             return "!EN LA GUERRA EL EMPATE CONLLEVA A LA DERROTA! \n Sigue intentando";
@@ -32,7 +38,7 @@ public class Game {
 
 
     public int jugadaCPU() {
-        int JugadaCPU = new Random().nextInt(3);
+        int JugadaCPU = new Random().nextInt(5);
         return JugadaCPU;
     }
 
