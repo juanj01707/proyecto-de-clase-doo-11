@@ -28,6 +28,6 @@ public abstract class Recurso {
     }
 
     public void setCopias(int copias) {
-        this.copias = 0 ;
+        this.copias = 0;
     }
 }

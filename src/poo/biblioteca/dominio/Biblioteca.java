@@ -55,13 +55,13 @@ public class Biblioteca {
         });
     }
 
-    public void listarCopiasPorRecurso(){
-        this.recursos.forEach(recurso -> {
-            if (recurso instanceof Copiable && recurso.getCopias()) {
-                System.out.println(recurso + " Recursos Fotocopiados");
-            }
-        });
+    //public void listarCopiasPorRecurso(){
+       // this.recursos.forEach(recurso -> {
+            //if (recurso instanceof Copiable && recurso.getCopias()) {
+         //       System.out.println(recurso + " Recursos Fotocopiados");
+           // }
+       // });
 
     }
 
-}
+

@@ -7,6 +7,9 @@ public class Libro extends Recurso implements Prestable, Copiable {
         super(nombre, prestado, copias);
     }
 
+
+
+
     @Override
     public void prestar(){
         super.setPrestado(true);
@@ -19,6 +22,7 @@ public class Libro extends Recurso implements Prestable, Copiable {
 
     @Override
     public void fotocopiar() {
+        super.setCopias(super.getCopias()+1);
 
     }
 }
