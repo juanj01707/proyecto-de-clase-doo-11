@@ -8,8 +8,6 @@ public class Libro extends Recurso implements Prestable, Copiable {
     }
 
 
-
-
     @Override
     public void prestar(){
         super.setPrestado(true);

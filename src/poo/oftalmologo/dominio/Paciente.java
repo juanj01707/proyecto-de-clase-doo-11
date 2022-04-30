@@ -4,11 +4,13 @@ public abstract class Paciente {
     private String nombre;
     private int edad;
     private boolean necesitaCirugia;
+    private String calidadVision;
 
-    public Paciente(String nombre, int edad, boolean necesitaCirugia) {
+    public Paciente(String nombre, int edad, boolean necesitaCirugia, String calidadVision) {
         this.nombre = nombre;
         this.edad = edad;
         this.necesitaCirugia = necesitaCirugia;
+        this.calidadVision = calidadVision;
     }
 
     public boolean isNecesitaCirugia() {
@@ -24,5 +26,11 @@ public abstract class Paciente {
         return edad;
     }
 
+    public String getCalidadVision() {
+        return calidadVision;
+    }
 
+    public void setCalidadVision(String calidadVision) {
+        this.calidadVision = calidadVision;
+    }
 }
