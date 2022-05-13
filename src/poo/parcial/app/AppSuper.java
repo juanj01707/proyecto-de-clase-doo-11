@@ -56,6 +56,7 @@ public class AppSuper {
                         mostrarMensaje("Ocurrió un error agregando el producto");
                     }
                     break;
+<<<<<<< Updated upstream
                 case OPCION_VER_POR_TIPO :
                     String tipoBuscado = (String) JOptionPane.showInputDialog(null, "Seleccione un tipo a buscar",
                             "POO", JOptionPane.QUESTION_MESSAGE, icono, TipoProducto.TIPOS.toArray(), null);
@@ -90,10 +91,26 @@ public class AppSuper {
                     Producto pCaro = carrito.getProductoMasCaro();
 
                     mostrarMensaje(pCaro.getNombre()  + "\n $ " + pCaro.getPrecio());
+=======
+
+                case OPCION_SACAR :
+                    //carrito = JOptionPane.showInputDialog(null,"que producto deceas sacar");
+                    //carrito.sacar("nombre");
+                    mostrarMensaje("Cual es el producto a sacar" + carrito.getProductos().size()  +
+                            " productos. Has sacado el producto " + carrito.sacar() + " del carrito " );
+                    break;
+                case OPCION_MAS_CARO :
+                    carrito.getProductoMasCaro();
+                    mostrarMensaje("Aqui va mas caro");
+>>>>>>> Stashed changes
                     break;
                 case OPCION_VER_TOTAL :
                     mostrarMensaje("Llevas " + carrito.getProductos().size()  +
                             " productos. El valor total de tu mercado es " + carrito.calcularValorTotal());
+                    break;
+                case OPCION_VER_POR_TIPO :
+                    //carrito.buscarPorTipo(String tipo);
+                    //mostrarMensaje("De que tipo es el producto"+ carrito.getProductos().size() + carrito.buscarPorTipo(String tipo));
                     break;
                 case JOptionPane.CLOSED_OPTION:
                     return;
